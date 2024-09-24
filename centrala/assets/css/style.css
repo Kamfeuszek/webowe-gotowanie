@@ -1,13 +1,19 @@
 @charset "UTF-8";
 @import url("font-awesome.min.css");
+@import url('https://fonts.googleapis.com/css2?family=Comic+Neue:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
 
 @font-face {
   font-family: "Comic Neue";
-  font-weight: 300;
-  font-style: normal;
-  src: url("/assets/fonts/ComicNeue-Italic.ttf");
+  src: local("ComicNeue"), url("/assets/fonts/ComicNeue-Bold.ttf") format("ttf");
 } 
 
 * {
   font-family: "Comic Neue";
 } 
+.top-bar {
+  padding-top: 15px;
+}
+.bottom-bar {
+  display: flex;
+  background-color: lightgreen;
+}
