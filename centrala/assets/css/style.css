@@ -15,18 +15,21 @@
 .top-bar {
   width: 100%;
   height: 20%;
+  background: linear-gradient(yellowgreen, green);
+  padding: 5px;
 }
 .content {
   width: 100%;
-  height: 80%;
+  height: 816px;
   background-color: wheat;
 }
 .bottom-bar {
   width: 100%;
   height: 20%;
+  background: linear-gradient(yellowgreen, green);
   display: flex;
 }
 img {
-  height: 100px;
-  width: 100px;
+  height: 75px;
+  width: 75px;
 }
