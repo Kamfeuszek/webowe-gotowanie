@@ -18,6 +18,11 @@
   background: linear-gradient(yellowgreen, green);
   padding: 5px;
 }
+.side-bar {
+  height: 816px;
+  width: 15%;
+  background-color: black;
+}
 .content {
   width: 100%;
   height: 816px;
