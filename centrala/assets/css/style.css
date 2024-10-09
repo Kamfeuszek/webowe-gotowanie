@@ -12,11 +12,11 @@
   margin: 0;
   padding: 0;
 } 
-.top-bar {
+.top-bar{
   width: 100%;
   height: 75px;
   background: linear-gradient(yellowgreen, green);
-  padding: 5px;
+  padding-top: 13px;
 }
 .side-bar {
   height: 797px;
@@ -33,9 +33,38 @@
   height: 75px;
   background: linear-gradient(yellowgreen, green);
   display: flex;
-  padding-top: 10px;
+  padding-top: 13px;
 }
 img {
   height: 50px;
   width: 50px;
+}
+.offcanvas-header {
+  width: 100%;
+  height: 75px;
+  background: linear-gradient(yellowgreen, green);
+  padding-top: 13px;
+}
+.offcanvas-body {
+  background-color: black;
+}
+#hetero {
+  background-color: transparent;
+  border: 0;
+}
+#offcanvasLeft {
+  width: 18%;
+}
+#xpp {
+  color: white;
+}
+#sidebarbody {
+  padding-top: 20px;
+  padding-left: 20px;
+  color: white;
+  font-size: large;
+}
+#sidebarbody a {
+  color: inherit;
+  text-decoration: inherit;
 }
