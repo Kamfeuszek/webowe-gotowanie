@@ -1,0 +1,7 @@
+{"menu":[
+    {"url":"lightning.html?groupID-1", "name":"<i class='fa fa-lightbulb-o' aria-hidden='true' style='color: yellow;'></i> Oświetlenie<br><br>", "active":1},
+    {"url":"#", "name":"<i class='fa fa-plug' aria-hidden='true' style='color: orange;'></i> Zasilanie<br><br>", "active":1},
+    {"url":"temperature.html", "name":"<i class='fa fa-thermometer-full' aria-hidden='true' style='color: red;'></i> Temperatura<br><br>", "active":1},
+    {"url":"#", "name":"<i class='fa fa-tint' aria-hidden='true' style='color: blue;'></i> Zraszacze<br><br>"},
+    {"url":"#", "name":"<i class='fa fa-cog' aria-hidden='true' style='color: lightblue;'></i> Ustawienia<br><br>", "active":1}
+]}
