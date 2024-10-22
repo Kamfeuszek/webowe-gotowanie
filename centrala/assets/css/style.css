@@ -16,16 +16,16 @@
   width: 100%;
   height: 75px;
   background: linear-gradient(yellowgreen, green);
-  padding-top: 13px;
+  padding-top: 10px;
 }
 .side-bar {
-  height: 797px;
+  height: 805px;
   width: 15%;
   background-color: black;
 }
 .content {
   width: 100%;
-  height: 797px;
+  height: 805px;
   background-color: wheat;
 }
 .bottom-bar {
@@ -33,17 +33,12 @@
   height: 75px;
   background: linear-gradient(yellowgreen, green);
   display: flex;
-  padding-top: 13px;
-}
-img {
-  height: 50px;
-  width: 50px;
+  padding-top: 5px;
 }
 .offcanvas-header {
   width: 100%;
   height: 75px;
   background: linear-gradient(yellowgreen, green);
-  padding-top: 15px;
 }
 .offcanvas-body {
   background-color: black;

@@ -6,10 +6,14 @@ function createMenu() {
 
         menu.forEach(function(item)  {
             if(item.active == 1) {
-                content += "<a href='" + item.url + "'>" + item.name + "</a><br><br>";
+                content += "<a href='" + item.url + "' onclick='loadView(this);'>" + item.name + "</a><br><br>";
             }
         });
         sidebar.innerHTML = content;
     })
 }
 createMenu();
+function loadView() {
+    
+}
+loadView();
