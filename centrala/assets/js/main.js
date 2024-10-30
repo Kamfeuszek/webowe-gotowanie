@@ -19,7 +19,7 @@ function createMenu() {
 function loadView() {
     $('#sidebarbody').on('click', 'a', function(e) {
         var htmlFile = $(this).attr('href');
-        $('.content').load("assets/views/" + htmlFile);
+        $('.content').load(htmlFile);
         e.preventDefault();
     });
 }
