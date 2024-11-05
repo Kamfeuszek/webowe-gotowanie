@@ -1,4 +1,8 @@
 $(document).ready(function () {
+    $('#hetero').click(function(e) {
+        $('#sidebar').show();
+        e.preventDefault();
+    });
     createMenu();
     loadView();
 })
@@ -19,10 +23,10 @@ function loadView() {
     $('#sidebarbody').on('click', 'a', function(e) {
         var htmlFile = $(this).attr('href');
         $('.content').load("assets/views/" + htmlFile);
-        //helperHideSidebar();
+        helperHideSidebar();
         e.preventDefault();
     });
 }
-/* function helperHideSidebar() {
-    $('#overlay-menu').hide();
-} */
+function helperHideSidebar() {
+    $('#sidebar').hide();
+}
