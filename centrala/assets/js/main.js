@@ -5,7 +5,6 @@ $(document).ready(function () {
 function createMenu() {
     $.getJSON('menu.json', function(json) {
         var menu = json.menu;
-        let sidebar = document.getElementById("sidebarbody"); 
         var content = "";
 
         menu.forEach(function(item)  {
@@ -13,13 +12,17 @@ function createMenu() {
                 content += "<a href='" + item.url + "'>" + item.name + "</a><br><br>";
             }
         });
-        sidebar.innerHTML = content;
+        $("#sidebarbody").html(content);
     })
 }
 function loadView() {
     $('#sidebarbody').on('click', 'a', function(e) {
         var htmlFile = $(this).attr('href');
-        $('.content').load(htmlFile);
+        $('.content').load("assets/views/" + htmlFile);
+        //helperHideSidebar();
         e.preventDefault();
     });
 }
+/* function helperHideSidebar() {
+    $('#overlay-menu').hide();
+} */
