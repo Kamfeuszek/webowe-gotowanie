@@ -1,8 +1,4 @@
 $(document).ready(function () {
-    $('#hetero').click(function(e) {
-        $('#sidebar').show();
-        e.preventDefault();
-    });
     createMenu();
     loadView();
 })
@@ -22,11 +18,15 @@ function createMenu() {
 function loadView() {
     $('#sidebarbody').on('click', 'a', function(e) {
         var htmlFile = $(this).attr('href');
-        $('.content').load("assets/views/" + htmlFile);
+        if(htmlFile != "#") {
+            $('.content').load("assets/views/" + htmlFile);
+        }
         helperHideSidebar();
         e.preventDefault();
     });
 }
 function helperHideSidebar() {
-    $('#sidebar').hide();
+    var offcanvasElement = document.getElementById('offcanvasLeft');
+    var offcanvas = bootstrap.Offcanvas.getInstance(offcanvasElement);
+    offcanvas.hide();
 }
