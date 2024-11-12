@@ -1,1 +1,25 @@
-swiatło:
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <br>
+    <h1>Strona z oświetleniem</h1>
+    <p id="light">światło wyłączone</p><br>
+    <button id="button" class="btn btn-primary">Włącz</button>    
+</body>
+<script>
+    $("body").on("click", "#button", function(){
+        if($("#button").text() == "Włącz") {
+            $("#light").text("światło włączone");
+            $("#button").text("Wyłącz");
+        } else {
+            $("#light").text("światło wyłączone");
+            $("#button").text("Włącz");
+        }
+    });
+    </script>
+</html>
