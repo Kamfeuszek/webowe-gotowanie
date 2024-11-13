@@ -20,13 +20,12 @@ function loadView() {
         var htmlFile = $(this).attr('href');
         if(htmlFile != "#") {
             $('.content').load("assets/views/" + htmlFile);
-        }
+        } 
         helperHideSidebar();
         e.preventDefault();
     });
 }
 function helperHideSidebar() {
-    var offcanvasElement = document.getElementById('offcanvasLeft');
-    var offcanvas = bootstrap.Offcanvas.getInstance(offcanvasElement);
+    var offcanvas = bootstrap.Offcanvas.getInstance($('#offcanvasLeft'));
     offcanvas.hide();
 }

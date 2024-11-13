@@ -8,18 +8,35 @@
 <body>
     <br>
     <h1>Strona z oświetleniem</h1>
-    <p id="light">światło wyłączone</p><br>
+    <p id="text">światło wyłączone</p><br>
     <button id="button" class="btn btn-primary">Włącz</button>    
 </body>
 <script>
     $("body").on("click", "#button", function(){
-        if($("#button").text() == "Włącz") {
-            $("#light").text("światło włączone");
-            $("#button").text("Wyłącz");
-        } else {
-            $("#light").text("światło wyłączone");
-            $("#button").text("Włącz");
+        $.ajax({
+        url: 'ajax.php',
+        type: 'POST',
+        data: {'user': 'text'},
+        beforeSend: function() {
+            console.log("wysyłanie");
+        },
+        complete: function() {
+            console.log("ukończono");
+        },
+        success: function(response) {
+            if($("#button").text() == "Włącz") {
+                $("#text").text(response);
+                $("#button").text("Wyłącz");
+            } else {
+                $("#text").text("światło wyłączone");
+                $("#button").text("Włącz");
+            } 
+        },
+        error: function() {
+            console.log("aha");
         }
     });
+    });
+    
     </script>
 </html>
