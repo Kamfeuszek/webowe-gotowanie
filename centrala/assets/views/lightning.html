@@ -9,7 +9,17 @@
     <br>
     <h1>Strona z oświetleniem</h1>
     <p id="text">światło wyłączone</p><br>
-    <button id="button" class="btn btn-primary">Włącz</button>    
+    <!-- <button id="button" class="btn btn-primary">Włącz</button><br><br> -->
+
+    <form action="server.php" method="post">
+        <input type="hidden" name="jsonFile" id="jsonFile" value="lightning">
+        <input type="hidden" name="id" id="id">
+        Nazwa przełącznika: <input type="text" name="name" id="name"><br>
+        Status: <input type="text" name="status" id="status" placeholder="on | off"><br><br>
+        <button type="submit" id="send">Wyślij</button>
+    </form>
+    <button id="check">AAA</button>
+    <p id="dane"></p>
 </body>
 <script>
     $("body").on("click", "#button", function(){
@@ -37,6 +47,24 @@
         }
     });
     });
-    
+    $("body").on("click", "#check", function(){
+        $.ajax({
+            url: 'server.php',
+            type: 'POST',
+            data: {'user': 'text'},
+            beforeSend: function() {
+                console.log("wysyłanie");
+            },
+            complete: function() {
+                console.log("ukończono");
+            },
+            success: function(response) {
+                $("#dane").text(response);
+            },
+            error: function() {
+                console.log("aha");
+            }
+        });
+    });
     </script>
 </html>
