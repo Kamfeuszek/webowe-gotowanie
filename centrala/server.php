@@ -11,7 +11,9 @@ if(isset($_POST))
 		$status = $_POST['status'];
 		$name = $_POST['name'];
 		$obj = json_decode($json);
-		$obj->placement->{$id}->switchStatus = $status;
+		$obj->switches->{$id}->switchID = (int)$id;
+        $obj->switches->{$id}->name = $name;
+        $obj->switches->{$id}->switchStatus = $status;
 		
 		
 		file_put_contents($file . '.json', json_encode($obj));
@@ -19,3 +21,5 @@ if(isset($_POST))
 	}
 	echo $json;
 }
+
+?>

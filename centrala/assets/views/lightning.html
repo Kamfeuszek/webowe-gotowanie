@@ -11,18 +11,17 @@
     <p id="text">światło wyłączone</p><br>
     <!-- <button id="button" class="btn btn-primary">Włącz</button><br><br> -->
 
-    <form action="server.php" method="post">
+    <form id="lightningForm">
         <input type="hidden" name="jsonFile" id="jsonFile" value="lightning">
-        <input type="hidden" name="id" id="id">
-        Nazwa przełącznika: <input type="text" name="name" id="name"><br>
-        Status: <input type="text" name="status" id="status" placeholder="on | off"><br><br>
+        <input type="hidden" name="id" id="id" value="1">
+        Nazwa przełącznika: <input type="text" name="name" id="name" required><br>
+        Status: <input type="text" name="status" id="status" placeholder="on|off" required pattern="on|off"><br><br>
         <button type="submit" id="send">Wyślij</button>
     </form>
-    <button id="check">AAA</button>
-    <p id="dane"></p>
+    <div id="dane"></div>
 </body>
 <script>
-    $("body").on("click", "#button", function(){
+    /* $("body").on("click", "#button", function(){
         $.ajax({
         url: 'ajax.php',
         type: 'POST',
@@ -45,13 +44,13 @@
         error: function() {
             console.log("aha");
         }
-    });
-    });
-    $("body").on("click", "#check", function(){
+    }); 
+    }); */
+    $("#lightningForm").on("submit", "#send", function(){
         $.ajax({
             url: 'server.php',
             type: 'POST',
-            data: {'user': 'text'},
+            data: $(this).serialize(),
             beforeSend: function() {
                 console.log("wysyłanie");
             },
@@ -59,7 +58,15 @@
                 console.log("ukończono");
             },
             success: function(response) {
-                $("#dane").text(response);
+                $.getJSON('lightning.json', function(json) {
+                    var switches = json.switches;
+                    var content = "";
+
+                    switches.forEach(function(item)  {
+                        content += "<p>" + item.switchID + " " + item.name + " " + item.switchStatus + "</p><br><br>";
+                    });
+                    $("#dane").html(content);
+                })
             },
             error: function() {
                 console.log("aha");
