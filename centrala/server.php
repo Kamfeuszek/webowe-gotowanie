@@ -2,7 +2,6 @@
 
 if(isset($_POST))
 {
-	var_dump($_POST);
 	$file = $_POST['jsonFile'];
 	$json = file_get_contents($file . '.json');
 

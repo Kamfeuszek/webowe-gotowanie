@@ -18,7 +18,7 @@
         Status: <input type="text" name="status" id="status" placeholder="on|off" required pattern="on|off"><br><br>
         <button type="submit" id="send">Wyślij</button>
     </form>
-    <p id="dane"></p>
+    <div id="dane"></div>
 </body>
 <script>
     /* $("body").on("click", "#button", function(){
@@ -58,8 +58,13 @@
                 console.log("ukończono");
             },
             success: function(response) {
+                console.log(response);
                 const arr = JSON.parse(response);
-                $("#dane").text(arr[0]);
+                var content = "";
+                for(i = 1; i <= Object.keys(arr.switches).length; i++) {
+                    content += "<p>" + arr.switches[i].name + " " + arr.switches[i].switchStatus + "</p><br>";
+                }
+                $("#dane").html(content);
             },
             error: function() {
                 console.log("aha");
