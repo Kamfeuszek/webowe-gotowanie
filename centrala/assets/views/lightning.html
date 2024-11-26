@@ -11,14 +11,14 @@
     <p id="text">światło wyłączone</p><br>
     <!-- <button id="button" class="btn btn-primary">Włącz</button><br><br> -->
 
-    <form id="lightningForm">
+    <form id="lightningForm" method="post">
         <input type="hidden" name="jsonFile" id="jsonFile" value="lightning">
         <input type="hidden" name="id" id="id" value="1">
         Nazwa przełącznika: <input type="text" name="name" id="name" required><br>
         Status: <input type="text" name="status" id="status" placeholder="on|off" required pattern="on|off"><br><br>
         <button type="submit" id="send">Wyślij</button>
     </form>
-    <div id="dane"></div>
+    <p id="dane"></p>
 </body>
 <script>
     /* $("body").on("click", "#button", function(){
@@ -46,11 +46,11 @@
         }
     }); 
     }); */
-    $("#lightningForm").on("submit", "#send", function(){
+    $("body").delegate("#lightningForm", "submit", function(e){
         $.ajax({
             url: 'server.php',
             type: 'POST',
-            data: $(this).serialize(),
+            data: $("#lightningForm").serialize(),
             beforeSend: function() {
                 console.log("wysyłanie");
             },
@@ -58,20 +58,14 @@
                 console.log("ukończono");
             },
             success: function(response) {
-                $.getJSON('lightning.json', function(json) {
-                    var switches = json.switches;
-                    var content = "";
-
-                    switches.forEach(function(item)  {
-                        content += "<p>" + item.switchID + " " + item.name + " " + item.switchStatus + "</p><br><br>";
-                    });
-                    $("#dane").html(content);
-                })
+                const arr = JSON.parse(response);
+                $("#dane").text(arr[0]);
             },
             error: function() {
                 console.log("aha");
             }
         });
+        e.preventDefault();
     });
     </script>
 </html>
