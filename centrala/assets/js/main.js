@@ -3,7 +3,7 @@ $(document).ready(function () {
     loadView();
 })
 function createMenu() {
-    $.getJSON('menu.json', function(json) {
+    $.getJSON('data/menu.json', function(json) {
         var menu = json.menu;
         var content = "";
 
@@ -19,7 +19,7 @@ function loadView() {
     $('#sidebarbody').on('click', 'a', function(e) {
         var htmlFile = $(this).attr('href');
         if(htmlFile != "#") {
-            $('.content').load("assets/views/" + htmlFile);
+            $('.content').load("views/" + htmlFile);
         } 
         helperHideSidebar();
         e.preventDefault();

@@ -1,9 +1,17 @@
 <?php
 
+$dir = 'data';
+
 if(isset($_POST))
 {
 	$file = $_POST['jsonFile'];
-	$json = file_get_contents($file . '.json');
+
+	if (!is_file($dir . DIRECTORY_SEPARATOR . $file . '.json'))
+	{
+		file_put_contents($dir . DIRECTORY_SEPARATOR . $file . '.json', '');
+	}
+	
+	$json = file_get_contents($dir . DIRECTORY_SEPARATOR . $file . '.json');
 
 	if(isset($_POST['id']))
 	{
@@ -16,8 +24,8 @@ if(isset($_POST))
         $obj->switches->{$id}->switchStatus = $status;
 		
 		
-		file_put_contents($file . '.json', json_encode($obj));
-		$json = file_get_contents($file . '.json');
+		file_put_contents($dir . DIRECTORY_SEPARATOR . $file . '.json', json_encode($obj));
+		$json = file_get_contents($dir . DIRECTORY_SEPARATOR . $file . '.json');
 	}
 	echo $json;
 }
