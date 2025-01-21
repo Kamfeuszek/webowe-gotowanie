@@ -62,9 +62,37 @@
                 const arr = JSON.parse(response);
                 var content = "";
                 for(i = 1; i <= Object.keys(arr.switches).length; i++) {
-                    content += "<p>" + arr.switches[i].name + " " + arr.switches[i].switchStatus + "</p><br>";
+                    if(arr.switches[i].switchStatus == "on") {
+                        content += "<p>" + arr.switches[i].name + " " + arr.switches[i].switchStatus + " <input type='checkbox' id='"+ i +"' name='checkbox"+ i +"' checked></p><br>";
+                    } else {
+                        content += "<p>" + arr.switches[i].name + " " + arr.switches[i].switchStatus + " <input type='checkbox' id='"+ i +"' name='checkbox"+ i +"'></p><br>";
+                    }
                 }
                 $("#dane").html(content);
+            },
+            error: function() {
+                console.log("aha");
+            }
+        });
+        e.preventDefault();
+    });
+    $("body").on("click", "#1", function(e) {
+        $.ajax({
+            url: 'server2.php',
+            type: 'POST',
+            beforeSend: function() {
+                console.log("wysyłanie");
+            },
+            complete: function() {
+                console.log("ukończono");
+            },
+            success: function(response) {
+                const arr = JSON.parse(response);
+                if(arr.switches[1].switchStatus == "on") {
+                    $("#1").prop("checked", true);
+                } else {
+                    $("#1").prop("checked", false);
+                }
             },
             error: function() {
                 console.log("aha");
