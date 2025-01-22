@@ -59,15 +59,19 @@
             },
             success: function(response) {
                 console.log(response);
-                const arr = JSON.parse(response);
+                var arr = JSON.parse(response.switches);
+                console.log(arr);
                 var content = "";
-                for(i = 1; i <= Object.keys(arr.switches).length; i++) {
-                    if(arr.switches[i].switchStatus == "on") {
-                        content += "<p>" + arr.switches[i].name + " " + arr.switches[i].switchStatus + " <input type='checkbox' id='"+ i +"' name='checkbox"+ i +"' checked></p><br>";
-                    } else {
-                        content += "<p>" + arr.switches[i].name + " " + arr.switches[i].switchStatus + " <input type='checkbox' id='"+ i +"' name='checkbox"+ i +"'></p><br>";
-                    }
+                for (const property in arr) {
+                    console.log(arr[property]['switchID']);
                 }
+               /* for(i = 1; i <= Object.keys(arr.switches).length; i++) {
+                    if(arr.switches[i].switchStatus == "on") {
+                        content += "<form id='lightningForm2'>" + arr.switches[i].name + "<input type='hidden' id='name' value='" + arr.switches[i].name + "'> " + arr.switches[i].switchStatus + " <input type='checkbox' id='"+ i +"' name='checkbox"+ i +"' checked></p><br>";
+                    } else {
+                        content += "<form id='lightningForm2'>" + arr.switches[i].name + " " + arr.switches[i].switchStatus + " <input type='checkbox' id='"+ i +"' name='checkbox"+ i +"'></p><br>";
+                    }
+                }*/
                 $("#dane").html(content);
             },
             error: function() {
